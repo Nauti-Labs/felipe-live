@@ -16,6 +16,7 @@
         --muted: #a8abb3;
         --red: #ef233c;
         --line: rgba(255, 255, 255, 0.12);
+        --green: #6fffb0;
       }
 
       * {
@@ -75,17 +76,24 @@
         line-height: 1.5;
       }
 
-      a {
+      .status {
         display: inline-flex;
         align-items: center;
-        gap: 8px;
-        min-height: 42px;
-        padding: 0 15px;
-        border-radius: 6px;
-        background: var(--red);
-        color: white;
-        text-decoration: none;
-        font-weight: 700;
+        gap: 10px;
+        color: var(--green);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .status::before {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: currentColor;
+        box-shadow: 0 0 18px currentColor;
+        content: "";
       }
 
       iframe {
@@ -119,8 +127,8 @@
           <path d="M10 52h36" stroke="#ef233c" stroke-width="8" stroke-linecap="square"/>
         </svg>
         <h1>Felipe</h1>
-        <p>Opening the live trial desk.</p>
-        <a href="https://felipe-production-8624.up.railway.app/crypto">Open directly</a>
+        <p>Opening Mission Control.</p>
+        <div class="status">Live desk loading</div>
       </section>
     </main>
 
