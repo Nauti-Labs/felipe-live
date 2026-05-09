@@ -32,9 +32,12 @@
       .fallback {
         position: fixed;
         inset: 0;
+        z-index: 2;
         display: grid;
         place-items: center;
         padding: 24px;
+        opacity: 1;
+        transition: opacity 180ms ease;
         background:
           linear-gradient(135deg, rgba(239, 35, 60, 0.12), transparent 38%),
           radial-gradient(circle at 80% 18%, rgba(255, 255, 255, 0.08), transparent 24%),
@@ -85,11 +88,22 @@
       iframe {
         position: fixed;
         inset: 0;
-        z-index: 2;
+        z-index: 1;
         width: 100vw;
         height: 100vh;
         border: 0;
+        opacity: 0;
+        transition: opacity 180ms ease;
         background: var(--bg);
+      }
+
+      body.loaded .fallback {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      body.loaded iframe {
+        opacity: 1;
       }
     </style>
   </head>
@@ -108,9 +122,15 @@
     </main>
 
     <iframe
+      id="felipe-frame"
       title="Felipe live trial desk"
       src="https://felipe-production-8624.up.railway.app/crypto"
       allow="clipboard-read; clipboard-write"
     ></iframe>
+    <script>
+      document.getElementById('felipe-frame')?.addEventListener('load', () => {
+        document.body.classList.add('loaded');
+      });
+    </script>
   </body>
 </html>
